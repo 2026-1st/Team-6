@@ -78,6 +78,16 @@ target/
 # Jupyter Notebook
 .ipynb_checkpoints
 
+# Project data policy
+data/raw/*
+!data/raw/.gitkeep
+data/embeddings/*
+!data/embeddings/.gitkeep
+models/
+*.pt
+*.pth
+*.ckpt
+
 # IPython
 profile_default/
 ipython_config.py
