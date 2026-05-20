@@ -321,7 +321,76 @@ business_cluster = 4
 
 따라서 이 결과 CSV는 3단계 RoBERTa 임베딩 또는 4단계 모델링의 입력 데이터로 사용할 수 있습니다.
 
-## 14. 다음 단계
+## 14. 생성된 파생변수 요약
+
+이번 피처 엔지니어링 단계에서는 총 21개의 파생변수를 생성했습니다.
+
+```text
+텍스트 기반 파생변수: 8개
+날짜 기반 파생변수: 4개
+유저 기준 파생변수: 3개
+식당 기준 파생변수: 3개
+위치 및 상권 파생변수: 3개
+총합: 21개
+```
+
+### 14.1 텍스트 기반 파생변수
+
+텍스트 기반 파생변수는 총 8개입니다.
+
+| 파생변수 | 생성 방식 |
+|---|---|
+| `text_length` | 리뷰 텍스트의 전체 글자 수를 계산 |
+| `word_count` | 리뷰 텍스트를 공백 기준으로 나누어 단어 수 계산 |
+| `sentence_count` | `.`, `!`, `?` 기호를 기준으로 문장 수 추정 |
+| `avg_word_length` | `text_length / word_count`로 평균 단어 길이 계산 |
+| `uppercase_ratio` | 전체 글자 중 대문자가 차지하는 비율 계산 |
+| `exclamation_count` | 리뷰 텍스트 안의 `!` 개수 계산 |
+| `question_count` | 리뷰 텍스트 안의 `?` 개수 계산 |
+| `engagement_sum` | `useful + funny + cool` 합계 계산 |
+
+### 14.2 날짜 기반 파생변수
+
+날짜 기반 파생변수는 총 4개입니다.
+
+| 파생변수 | 생성 방식 |
+|---|---|
+| `review_year` | `date` 컬럼에서 리뷰 작성 연도 추출 |
+| `review_month` | `date` 컬럼에서 리뷰 작성 월 추출 |
+| `review_dayofweek` | `date` 컬럼에서 리뷰 작성 요일 추출 |
+| `is_weekend` | 리뷰 작성일이 토요일 또는 일요일이면 1, 아니면 0 |
+
+### 14.3 유저 기준 파생변수
+
+유저 기준 파생변수는 총 3개입니다.
+
+| 파생변수 | 생성 방식 |
+|---|---|
+| `user_review_count` | `user_id`별 리뷰 수 계산 |
+| `user_avg_stars` | `user_id`별 평균 별점 계산 |
+| `user_star_deviation` | 현재 리뷰 별점에서 해당 유저의 평균 별점을 뺀 값 |
+
+### 14.4 식당 기준 파생변수
+
+식당 기준 파생변수는 총 3개입니다.
+
+| 파생변수 | 생성 방식 |
+|---|---|
+| `business_review_count` | `business_id`별 리뷰 수 계산 |
+| `business_avg_stars` | `business_id`별 평균 별점 계산 |
+| `business_star_deviation` | 현재 리뷰 별점에서 해당 식당의 평균 별점을 뺀 값 |
+
+### 14.5 위치 및 상권 파생변수
+
+위치 및 상권 파생변수는 총 3개입니다.
+
+| 파생변수 | 생성 방식 |
+|---|---|
+| `latitude` | `business_location.csv`에서 `business_id` 기준으로 위도 병합 |
+| `longitude` | `business_location.csv`에서 `business_id` 기준으로 경도 병합 |
+| `business_cluster` | `latitude`, `longitude`를 표준화한 뒤 K-Means로 상권 클러스터 번호 생성 |
+
+## 15. 다음 단계
 
 다음 단계에서는 `text` 컬럼을 RoBERTa 모델에 통과시켜 텍스트 임베딩을 생성합니다.
 
