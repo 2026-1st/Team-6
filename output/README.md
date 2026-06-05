@@ -5,8 +5,9 @@
 ```text
 output/
   figures/   # EDA, 모델링, SHAP, 오류 분석 그래프.
+  maps/      # 리뷰 빈도 기반 인터랙티브 지도.
   tables/    # 요약 CSV, 데이터 인벤토리, 검증용 표.
   reports/   # 최종 보고서 또는 발표용 자료.
 ```
 
-현재 `figures/`와 `tables/`의 가벼운 산출물은 GitHub에 포함할 수 있도록 관리합니다. `reports/`에는 최종 보고서나 발표 자료를 필요할 때 추가합니다.
+현재 `figures/`, `maps/`, `tables/`의 가벼운 산출물은 GitHub에 포함할 수 있도록 관리합니다. `reports/`에는 최종 보고서나 발표 자료를 필요할 때 추가합니다.

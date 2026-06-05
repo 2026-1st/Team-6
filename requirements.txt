@@ -11,6 +11,7 @@ scikit-learn>=1.5
 matplotlib>=3.9
 seaborn>=0.13
 wordcloud>=1.9
+folium>=0.17
 
 # 텍스트 임베딩
 tqdm>=4.66

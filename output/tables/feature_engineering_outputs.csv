@@ -1,0 +1,4 @@
+city,path,rows,columns,file_size_mb
+Philadelphia,/home/tonyjung/Ajou_univ/2026-1/machine learning/team_project/Team-6/data/processed/yelp_subset_philly_15k_features.csv,15000,31,11.559000968933105
+Tucson,/home/tonyjung/Ajou_univ/2026-1/machine learning/team_project/Team-6/data/processed/yelp_subset_tucson_15k_features.csv,15000,31,10.829315185546875
+New Orleans,/home/tonyjung/Ajou_univ/2026-1/machine learning/team_project/Team-6/data/processed/yelp_subset_new_orleans_15k_features.csv,15000,31,10.84864330291748

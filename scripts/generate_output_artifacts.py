@@ -6,15 +6,19 @@ import re
 from collections import Counter, defaultdict
 from pathlib import Path
 
+import folium
+from folium.plugins import HeatMap
+
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 INTERIM_DIR = PROJECT_ROOT / "data" / "interim"
 PROCESSED_DIR = PROJECT_ROOT / "data" / "processed"
 EMBEDDING_DIR = PROJECT_ROOT / "data" / "embeddings"
 FIGURE_DIR = PROJECT_ROOT / "output" / "figures"
+MAP_DIR = PROJECT_ROOT / "output" / "maps"
 TABLE_DIR = PROJECT_ROOT / "output" / "tables"
 
-for directory in [FIGURE_DIR, TABLE_DIR]:
+for directory in [FIGURE_DIR, MAP_DIR, TABLE_DIR]:
     directory.mkdir(parents=True, exist_ok=True)
 
 
@@ -22,6 +26,12 @@ CITY_CONFIGS = [
     ("Philadelphia", "philly", INTERIM_DIR / "yelp_subset_philly_15k.csv"),
     ("Tucson", "tucson", INTERIM_DIR / "yelp_subset_tucson_15k.csv"),
     ("New Orleans", "new_orleans", INTERIM_DIR / "yelp_subset_new_orleans_15k.csv"),
+]
+
+PROCESSED_CITY_CONFIGS = [
+    ("Philadelphia", "philly", PROCESSED_DIR / "yelp_subset_philly_15k_features.csv"),
+    ("Tucson", "tucson", PROCESSED_DIR / "yelp_subset_tucson_15k_features.csv"),
+    ("New Orleans", "new_orleans", PROCESSED_DIR / "yelp_subset_new_orleans_15k_features.csv"),
 ]
 
 STOPWORDS = {
@@ -162,12 +172,87 @@ def write_data_inventory() -> None:
     write_csv(TABLE_DIR / "data_inventory.csv", rows, ["단계", "파일", "행 수", "컬럼 수"])
 
 
+def build_review_location_counts(processed_path: Path) -> list[dict]:
+    counts: dict[tuple[str, str, str], int] = defaultdict(int)
+    for row in read_rows(processed_path):
+        business_id = row.get("business_id", "").strip()
+        latitude = row.get("latitude", "").strip()
+        longitude = row.get("longitude", "").strip()
+        if not business_id or not latitude or not longitude:
+            continue
+        try:
+            lat = float(latitude)
+            lon = float(longitude)
+        except ValueError:
+            continue
+        counts[(business_id, f"{lat:.8f}", f"{lon:.8f}")] += 1
+
+    rows = []
+    for (business_id, latitude, longitude), review_count in counts.items():
+        rows.append(
+            {
+                "business_id": business_id,
+                "latitude": latitude,
+                "longitude": longitude,
+                "review_count": review_count,
+            }
+        )
+    return sorted(rows, key=lambda row: row["review_count"], reverse=True)
+
+
+def create_review_heatmap(city_name: str, city_slug: str, processed_path: Path) -> None:
+    location_rows = build_review_location_counts(processed_path)
+    table_path = TABLE_DIR / f"{city_slug}_review_location_counts.csv"
+    write_csv(table_path, location_rows, ["business_id", "latitude", "longitude", "review_count"])
+
+    if not location_rows:
+        print(f"[{city_name}] 지도 생성 생략: 사용할 수 있는 위치 데이터가 없습니다.")
+        return
+
+    heat_data = [
+        [float(row["latitude"]), float(row["longitude"]), int(row["review_count"])]
+        for row in location_rows
+    ]
+    center_lat = sum(row[0] for row in heat_data) / len(heat_data)
+    center_lon = sum(row[1] for row in heat_data) / len(heat_data)
+
+    city_map = folium.Map(location=[center_lat, center_lon], zoom_start=12, tiles="CartoDB positron")
+    HeatMap(
+        heat_data,
+        radius=18,
+        blur=22,
+        min_opacity=0.25,
+        max_zoom=15,
+        name="리뷰 빈도 히트맵",
+    ).add_to(city_map)
+
+    top_locations = location_rows[:30]
+    for row in top_locations:
+        folium.CircleMarker(
+            location=[float(row["latitude"]), float(row["longitude"])],
+            radius=max(4, min(14, int(row["review_count"]) ** 0.5)),
+            color="#2f4858",
+            fill=True,
+            fill_opacity=0.65,
+            popup=f"리뷰 수: {row['review_count']}<br>business_id: {row['business_id']}",
+        ).add_to(city_map)
+
+    folium.LayerControl().add_to(city_map)
+    map_path = MAP_DIR / f"{city_slug}_review_heatmap.html"
+    city_map.save(map_path)
+    print(f"[{city_name}] 위치별 리뷰 수 저장 완료: {table_path}")
+    print(f"[{city_name}] 리뷰 빈도 히트맵 저장 완료: {map_path}")
+
+
 def main() -> None:
     for city_name, city_slug, input_path in CITY_CONFIGS:
         summarize_eda(city_name, city_slug, input_path)
+    for city_name, city_slug, processed_path in PROCESSED_CITY_CONFIGS:
+        create_review_heatmap(city_name, city_slug, processed_path)
     write_data_inventory()
     print(f"표 산출물 생성 완료: {TABLE_DIR}")
     print(f"그래프 산출물 생성 완료: {FIGURE_DIR}")
+    print(f"지도 산출물 생성 완료: {MAP_DIR}")
 
 
 if __name__ == "__main__":

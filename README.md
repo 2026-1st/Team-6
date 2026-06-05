@@ -21,6 +21,7 @@ Team-6/
 
   output/
     figures/      # EDA 및 분석 그래프.
+    maps/         # 리뷰 빈도 기반 인터랙티브 지도.
     tables/       # 요약표, 데이터 인벤토리 등 CSV 산출물.
     reports/      # 최종 보고서 또는 발표용 자료 보관 위치.
 
@@ -70,6 +71,19 @@ notebooks/00_full_pipeline/Team6_Full_Pipeline.ipynb
 5. notebooks/04_modeling_analysis/Modeling.ipynb
 ```
 
+## 실행 환경 준비
+
+로컬에서 실행할 경우 프로젝트 루트에서 가상환경을 만든 뒤 필요한 라이브러리를 설치합니다.
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+```
+
+VS Code에서 노트북을 실행할 때는 `.venv/bin/python` 또는 `Team-6 (.venv)` 커널을 선택합니다.
+
 ## 주요 데이터 파일
 
 `data/interim/`
@@ -105,6 +119,7 @@ new_orleans_pca_32.csv
 
 ```text
 output/figures/   # 도시별 타깃 분포, 주요 단어 그래프 등
+output/maps/      # 도시별 리뷰 빈도 히트맵 HTML
 output/tables/    # EDA 요약표, 데이터 인벤토리
 output/reports/   # 최종 보고서 보관 위치
 ```
