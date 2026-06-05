@@ -1,0 +1,10 @@
+단계,파일,행 수,컬럼 수
+중간 데이터,data/interim/yelp_subset_philly_15k.csv,15000,10
+중간 데이터,data/interim/yelp_subset_tucson_15k.csv,15000,10
+중간 데이터,data/interim/yelp_subset_new_orleans_15k.csv,15000,10
+처리 데이터,data/processed/yelp_subset_philly_15k_features.csv,15000,31
+처리 데이터,data/processed/yelp_subset_tucson_15k_features.csv,15000,31
+처리 데이터,data/processed/yelp_subset_new_orleans_15k_features.csv,15000,31
+임베딩 데이터,data/embeddings/philly_pca_32.csv,15000,32
+임베딩 데이터,data/embeddings/tucson_pca_32.csv,15000,32
+임베딩 데이터,data/embeddings/new_orleans_pca_32.csv,15000,32

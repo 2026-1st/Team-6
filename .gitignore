@@ -81,8 +81,10 @@ target/
 # Project data policy
 data/raw/*
 !data/raw/.gitkeep
-data/embeddings/*
-!data/embeddings/.gitkeep
+data/embeddings/*.npy
+!data/embeddings/*_pca_32.csv
+output/reports/*
+!output/reports/.gitkeep
 models/
 *.pt
 *.pth

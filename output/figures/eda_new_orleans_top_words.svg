@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="824" viewBox="0 0 820 824">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="32" y="38" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#222">New Orleans 주요 리뷰 단어</text>
+<text x="32" y="94" font-family="Arial, sans-serif" font-size="14" fill="#333">불만족: not</text>
+<rect x="190" y="70" width="402" height="26" rx="3" fill="#4f7cac"/>
+<text x="600" y="89" font-family="Arial, sans-serif" font-size="13" fill="#222">3,267</text>
+<text x="32" y="138" font-family="Arial, sans-serif" font-size="14" fill="#333">불만족: service</text>
+<rect x="190" y="114" width="168" height="26" rx="3" fill="#4f7cac"/>
+<text x="366" y="133" font-family="Arial, sans-serif" font-size="13" fill="#222">1,369</text>
+<text x="32" y="182" font-family="Arial, sans-serif" font-size="14" fill="#333">불만족: just</text>
+<rect x="190" y="158" width="166" height="26" rx="3" fill="#4f7cac"/>
+<text x="364" y="177" font-family="Arial, sans-serif" font-size="13" fill="#222">1,352</text>
+<text x="32" y="226" font-family="Arial, sans-serif" font-size="14" fill="#333">불만족: out</text>
+<rect x="190" y="202" width="165" height="26" rx="3" fill="#4f7cac"/>
+<text x="363" y="221" font-family="Arial, sans-serif" font-size="13" fill="#222">1,345</text>
+<text x="32" y="270" font-family="Arial, sans-serif" font-size="14" fill="#333">불만족: when</text>
+<rect x="190" y="246" width="141" height="26" rx="3" fill="#4f7cac"/>
+<text x="339" y="265" font-family="Arial, sans-serif" font-size="13" fill="#222">1,146</text>
+<text x="32" y="314" font-family="Arial, sans-serif" font-size="14" fill="#333">불만족: all</text>
+<rect x="190" y="290" width="138" height="26" rx="3" fill="#4f7cac"/>
+<text x="336" y="309" font-family="Arial, sans-serif" font-size="13" fill="#222">1,124</text>
+<text x="32" y="358" font-family="Arial, sans-serif" font-size="14" fill="#333">불만족: like</text>
+<rect x="190" y="334" width="137" height="26" rx="3" fill="#4f7cac"/>
+<text x="335" y="353" font-family="Arial, sans-serif" font-size="13" fill="#222">1,118</text>
+<text x="32" y="402" font-family="Arial, sans-serif" font-size="14" fill="#333">불만족: would</text>
+<rect x="190" y="378" width="134" height="26" rx="3" fill="#4f7cac"/>
+<text x="332" y="397" font-family="Arial, sans-serif" font-size="13" fill="#222">1,091</text>
+<text x="32" y="446" font-family="Arial, sans-serif" font-size="14" fill="#333">만족: not</text>
+<rect x="190" y="422" width="590" height="26" rx="3" fill="#4f7cac"/>
+<text x="788" y="441" font-family="Arial, sans-serif" font-size="13" fill="#222">4,794</text>
+<text x="32" y="490" font-family="Arial, sans-serif" font-size="14" fill="#333">만족: very</text>
+<rect x="190" y="466" width="553" height="26" rx="3" fill="#4f7cac"/>
+<text x="751" y="485" font-family="Arial, sans-serif" font-size="13" fill="#222">4,496</text>
+<text x="32" y="534" font-family="Arial, sans-serif" font-size="14" fill="#333">만족: here</text>
+<rect x="190" y="510" width="502" height="26" rx="3" fill="#4f7cac"/>
+<text x="700" y="529" font-family="Arial, sans-serif" font-size="13" fill="#222">4,086</text>
+<text x="32" y="578" font-family="Arial, sans-serif" font-size="14" fill="#333">만족: service</text>
+<rect x="190" y="554" width="490" height="26" rx="3" fill="#4f7cac"/>
+<text x="688" y="573" font-family="Arial, sans-serif" font-size="13" fill="#222">3,986</text>
+<text x="32" y="622" font-family="Arial, sans-serif" font-size="14" fill="#333">만족: all</text>
+<rect x="190" y="598" width="489" height="26" rx="3" fill="#4f7cac"/>
+<text x="687" y="617" font-family="Arial, sans-serif" font-size="13" fill="#222">3,977</text>
+<text x="32" y="666" font-family="Arial, sans-serif" font-size="14" fill="#333">만족: delicious</text>
+<rect x="190" y="642" width="419" height="26" rx="3" fill="#4f7cac"/>
+<text x="617" y="661" font-family="Arial, sans-serif" font-size="13" fill="#222">3,411</text>
+<text x="32" y="710" font-family="Arial, sans-serif" font-size="14" fill="#333">만족: new</text>
+<rect x="190" y="686" width="406" height="26" rx="3" fill="#4f7cac"/>
+<text x="604" y="705" font-family="Arial, sans-serif" font-size="13" fill="#222">3,303</text>
+<text x="32" y="754" font-family="Arial, sans-serif" font-size="14" fill="#333">만족: just</text>
+<rect x="190" y="730" width="396" height="26" rx="3" fill="#4f7cac"/>
+<text x="594" y="749" font-family="Arial, sans-serif" font-size="13" fill="#222">3,220</text>
+<text x="190" y="806" font-family="Arial, sans-serif" font-size="12" fill="#666">단어 빈도</text>
+</svg>
