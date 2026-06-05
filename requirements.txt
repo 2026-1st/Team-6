@@ -1,0 +1,25 @@
+# 노트북 실행 환경
+ipykernel>=7.0
+jupyter>=1.1
+
+# 데이터 처리 및 피처 엔지니어링
+numpy>=2.0
+pandas>=2.2
+scikit-learn>=1.5
+
+# 시각화 및 EDA
+matplotlib>=3.9
+seaborn>=0.13
+wordcloud>=1.9
+
+# 텍스트 임베딩
+tqdm>=4.66
+transformers>=4.45
+torch>=2.5
+
+# 모델링 및 해석
+catboost>=1.2
+shap>=0.46
+
+# 원본 Yelp 데이터 다운로드용
+kaggle>=1.6
